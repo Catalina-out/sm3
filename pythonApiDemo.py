@@ -72,8 +72,16 @@ def doSM3(indata):
 
     return s64.decode("utf-8")
 
-def doSM3Mac(indata):
-    pass
+def doSM3Hmac(indata):
+    key = c_uint(8)
+    keyLen = c_uint(32)
+    data = c_uint(8)
+    dataLen = c_uint(32)
+    mac = c_uint(8)
+    macLen = c_uint(32)
+    rv = dll.FM_CPC_SM3_Mac(hDev, )
+    if rv != 0:
+        print("FM_CPC_SM3_Mac error! rv=%08x" % rv)
 
 
 FM_HKEY_TO_HOST = 0x01ffffff  # /* key is not storage in dev */
